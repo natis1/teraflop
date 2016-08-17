@@ -13,10 +13,14 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <ncurses.h>
+
 
 using namespace std;
 
-void displayMainMenu () {
+void displayMainMenu ()
+{
+  clear();
   
   switch (getMainMenuUserInput()) {
 
@@ -46,29 +50,33 @@ void displayMainMenu () {
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
 }
 
 
 
 
-int getMainMenuUserInput () {
+int getMainMenuUserInput ()
+{
   int userInput = 0;
-  cout << "Welcome to Teraflop, may I take your order?" << endl;
-  cout << endl;
-  cout << "Start a (n)ew game" << endl;
-  cout << "(C)ontinue an existing game" << endl;
-  cout << "Change some of the (o)ptions" << endl;
-  cout << endl << endl;
-  //
+  
+  
+  
+  move(0 , 36); //Print as close to the middle of the screen as possible.
+  
+  printw("Teraflop");
+  
+  mvprintw(6 , 0, "Start a (n)ew game");
+  mvprintw(7, 0, "(C)ontinue an exisiting game");
+  mvprintw(8, 0, "Change some of the (o)ptions");
+  mvprintw(9, 0, "(V)iew the current leaderboards");
+  mvprintw(10, 0, "(q)uit the game");
+  
+  //Codeblock. This is implemented in game with a function which tracks your cursor movement.
+  mvprintw(23, 0, ">■");
+  move(23, 1);
+  
   int c = getchar();
+
   
   return userInput;
 }

@@ -16,19 +16,31 @@
 //STL for cout
 #include <iostream>
 #include <string>
-
+#include <ncurses.h>
 
 //Small note to keep this file under 50 lines
 
 using namespace std;
 
-int main (int argc, char *argv[]) {
-  // TODO: Add a real screen clear once I can actually use the internet
-  cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+int main (int argc, char *argv[])
+{
+  
+  initscr();
+  raw();
+  
+  printw("Welcome to Teraflop: The ultimate hacking simulator powered by NCurses");
+  mvprintw(1 , 0, "Please set your terminal window to 24 rows and 80 columns for best results");
+  mvprintw(23, 0, "Press any key to continue...");
+  
+  
+  
+  
+  getch();  
   displayMainMenu();
   
   
   
-  
+  endwin();
+
   exit(0);
 }

@@ -1,0 +1,5 @@
+
+
+initScreen();
+
+destroyScreen();
