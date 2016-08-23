@@ -13,6 +13,7 @@
 #include "main.hpp"
 #include "main_menu.hpp"
 
+
 //STL for cout
 #include <iostream>
 #include <string>
@@ -25,6 +26,7 @@ using namespace std;
 int main (int argc, char *argv[])
 {
   
+  //WINDOW *terminalInput = 
   initscr();
   raw();
   
@@ -35,12 +37,11 @@ int main (int argc, char *argv[])
   
   
   
-  getch();  
+  getch();
+  clear();
+  endwin();
+  
   displayMainMenu();
   
-  
-  
-  endwin();
-
-  exit(0);
+  return 0;
 }

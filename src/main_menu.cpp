@@ -11,6 +11,7 @@
 
 #include "main_menu.hpp"
 
+
 #include <iostream>
 #include <stdio.h>
 #include <ncurses.h>
@@ -20,10 +21,10 @@ using namespace std;
 
 void displayMainMenu ()
 {
-  clear();
   
   switch (getMainMenuUserInput()) {
-
+    
+    
 // The person wants to start a new game
     case 1:
       
@@ -57,6 +58,8 @@ void displayMainMenu ()
 
 int getMainMenuUserInput ()
 {
+  initscr();
+  raw();
   int userInput = 0;
   
   
@@ -72,11 +75,13 @@ int getMainMenuUserInput ()
   mvprintw(10, 0, "(q)uit the game");
   
   //Codeblock. This is implemented in game with a function which tracks your cursor movement.
-  mvprintw(23, 0, ">■");
+  mvprintw(23, 0, ">");
   move(23, 1);
   
-  int c = getchar();
-
+  //int c = getchar();
+  
+  getch();
+  endwin();
   
   return userInput;
 }
