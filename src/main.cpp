@@ -18,30 +18,33 @@
 #include <iostream>
 #include <string>
 #include <ncurses.h>
-
-//Small note to keep this file under 50 lines
+#include <signal.h>
 
 using namespace std;
 
 int main (int argc, char *argv[])
 {
-  
-  //WINDOW *terminalInput = 
+  sigset(SIGTERM, sigterm_handler);
   initscr();
   raw();
   
   printw("Welcome to Teraflop: The ultimate hacking simulator powered by NCurses");
   mvprintw(1 , 0, "Please set your terminal window to 24 rows and 80 columns for best results");
   mvprintw(23, 0, "Press any key to continue...");
-  
-  
-  
-  
   getch();
   clear();
-  endwin();
   
   displayMainMenu();
   
+  endwin();
   return 0;
+}
+
+
+void sigterm_handler(int signo){
+  endwin();
+  cout << "Program exited with error code : " << signo << endl;
+  cout << "                    See error log for info on what went wrong" << endl;
+  cout << endl;
+  cout << endl;
 }

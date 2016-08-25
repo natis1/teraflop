@@ -10,37 +10,59 @@
  */
 
 #include "main_menu.hpp"
+#include "save_manager.hpp"
 
+extern "C" 
+{
+    #include "log.h"
+}
 
 #include <iostream>
 #include <stdio.h>
 #include <ncurses.h>
+#include <string.h>
 
 
 using namespace std;
 
 void displayMainMenu ()
 {
+  char c = getMainMenuUserInput();
+  clear();
+  char log [7];
+  log[0] = 'c';
+  log[1] = 'h';
+  log[2] = 'a';
+  log[3] = 'r';
+  log[4] = ':';
+  log[5] = ' ';
+  log[6] =  c ;
   
-  switch (getMainMenuUserInput()) {
+  writeLogFile(log);
+  
+  switch (c) {
+    
+    
+    
     
     
 // The person wants to start a new game
-    case 1:
+    case 'n':
+      startNewGame();
       
       //TODO add teragame game(&Gamestate);
       
       break;
-// The person wants to configure their settings
-    case 2:
-      
+// The person wants to load an existing game
+    case 'l':
+      loadNewGame();
       //TODO add teragame game(&Gamestate);
       
       
       
       break;
 // The person wants to change some options
-    case 3:
+    case 'o':
       
       //TODO add options menu
       displayMainMenu();
@@ -50,20 +72,12 @@ void displayMainMenu ()
   }
   
   
-  
 }
 
 
 
 
-int getMainMenuUserInput ()
-{
-  initscr();
-  raw();
-  int userInput = 0;
-  
-  
-  
+int getMainMenuUserInput () {
   move(0 , 36); //Print as close to the middle of the screen as possible.
   
   printw("Teraflop");
@@ -77,11 +91,7 @@ int getMainMenuUserInput ()
   //Codeblock. This is implemented in game with a function which tracks your cursor movement.
   mvprintw(23, 0, ">");
   move(23, 1);
-  
-  //int c = getchar();
-  
-  getch();
-  endwin();
-  
-  return userInput;
+  char c = getch();
+  clear();
+  return c;
 }

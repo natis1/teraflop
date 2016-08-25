@@ -8,3 +8,5 @@ void startNewGame();
 
 void loadNewGame();
 void automatedGameLoader(std::string saveName);
+
+void printSeedInformation();

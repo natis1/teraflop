@@ -15,6 +15,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 struct userOptions {
   bool verbose = false;
@@ -73,7 +74,7 @@ struct computer {
   
   //Kernel name. Nonunix systems will generally either print NT on Windows or ERR on DOS.
   //Usually tells the person what kind of OS they are attempting to get into.
-  string kernelName;
+  std::string kernelName;
   
   std::vector<defense> securitySystems;
   
@@ -101,7 +102,7 @@ struct specialComputer {
   std::vector<defense> securitySystems;
   
   
-  string kernelName;
+  std::string kernelName;
 };
 
 
@@ -109,19 +110,19 @@ struct playerComputer {
   
   //CPU = personal attack power
   double attackPower;
-  string attackName;
+  std::string attackName;
   
   //RAM = max queuable actions (measued in GB)
   int    ramSize;
-  string ramName;
+  std::string ramName;
   
   //NET = max botnet attacking power
   double netSize;
-  string netName;
+  std::string netName;
   
   //HDD = max storable external computers
   int    hddSize;
-  string hddName;
+  std::string hddName;
 };
 
 struct cityBlock {
@@ -133,7 +134,7 @@ struct cityBlock {
   double fascism;
   
   //A procedurally generated description of the environment.
-  string blockDescription;
+  std::string blockDescription;
   
   
   

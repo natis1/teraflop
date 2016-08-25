@@ -16,4 +16,4 @@
 
 #pragma once
 
-//TODO actually put something here??
+void sigterm_handler(int signo);
